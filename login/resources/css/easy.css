@@ -25,8 +25,12 @@ a {
 	color: #3c9440;
 }
 
-.login-pf a:hover, .login-pf a:focus {
+.login-pf a:hover {
 	color: #3c9440;
+}
+
+.login-pf a:focus {
+    color: #aaa;
 }
 
 div.kc-logo-text {
