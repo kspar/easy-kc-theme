@@ -1,10 +1,25 @@
 
-body {
-	/*color: #000;*/
-}
 
 .login-pf body {
-	background: url(../img/taust.svg) no-repeat center center fixed;
+	background: url(../img/bg.svg) no-repeat center center fixed;
 	background-size: cover;
+}
+
+#kc-login input {
+	background-color: #4DAB54;
+	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
+}
+
+a {
+	color: #3c9440;
+}
+
+div.kc-logo-text {
+	background-image: none;
+}
+
+div.kc-logo-text span {
+	display: inline;
+	color: #363636;
 }
 
