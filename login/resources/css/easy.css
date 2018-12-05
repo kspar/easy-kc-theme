@@ -17,7 +17,15 @@
 	border: none;
 }
 
+.btn[disabled] {
+	background-color: #eee !important;
+}
+
 a {
+	color: #3c9440;
+}
+
+.login-pf a:hover, .login-pf a:focus {
 	color: #3c9440;
 }
 
