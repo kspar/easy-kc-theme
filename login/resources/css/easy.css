@@ -5,7 +5,7 @@
 	background-size: cover;
 }
 
-#kc-login input {
+#kc-login {
 	background-color: #4DAB54;
 	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
 }
