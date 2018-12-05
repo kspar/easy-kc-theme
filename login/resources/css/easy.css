@@ -8,6 +8,7 @@
 #kc-login {
 	background-color: #4DAB54;
 	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
+	border: none;
 }
 
 a {
@@ -30,6 +31,10 @@ div.kc-logo-text span {
 
 .form-control:hover {
 	border-color: #67b66c;
+}
+
+.btn:focus, .btn:active:focus {
+	outline: none;
 }
 
 
