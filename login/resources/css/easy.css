@@ -23,3 +23,13 @@ div.kc-logo-text span {
 	color: #363636;
 }
 
+.form-control:focus {
+	border-color: #78D47E;
+	box-shadow: 0 0 10px rgba(123, 219, 130, 0.6);
+}
+
+.form-control:hover {
+	border-color: #67b66c;
+}
+
+
