@@ -9,6 +9,10 @@
 	margin-bottom: 40px;
 }
 
+.login-pf-page .login-pf-page-header {
+	margin-bottom: 20px;
+}
+
 .btn-primary {
 	background-color: #41a045;
 	background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
