@@ -5,13 +5,13 @@
 	background-size: cover;
 }
 
-#kc-login {
+.btn-primary {
 	background-color: #41a045;
 	background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
 	border: none;
 }
 
-#kc-login:hover {
+.btn-primary:hover {
 	background-color: #3c9440;
 	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
 	border: none;
