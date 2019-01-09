@@ -8,8 +8,7 @@
 }
 
 .bs-sidebar ul li a:hover, .bs-sidebar ul li a:focus {
-    border: none;
-    background-color: #e1ffde;
+    background-color: rgba(3, 3, 3, 0.04);
 }
 
 
