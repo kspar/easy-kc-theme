@@ -20,7 +20,7 @@
     </#if>
 </head>
 <body class="admin-console user ${bodyClass}">
-        
+
     <header class="navbar navbar-default navbar-pf navbar-main header">
         <nav class="navbar" role="navigation">
             <div class="navbar-header">
@@ -32,6 +32,7 @@
                 <div class="container">
                     <ul class="nav navbar-nav navbar-utility">
                         <#if realm.internationalizationEnabled>
+                        <#if (locale.supported?size > 0) >  <#-- Remove dropdown if there is 1 language -->
                             <li>
                                 <div class="kc-dropdown" id="kc-locale-dropdown">
                                     <a href="#" id="kc-current-locale-link">${locale.current}</a>
@@ -42,6 +43,7 @@
                                     </ul>
                                 </div>
                             <li>
+                        </#if>
                         </#if>
                         <#if referrer?has_content && referrer.url?has_content><li><a href="${referrer.url}" id="referrer">${msg("backTo",referrer.name)}</a></li></#if>
                         <li><a href="${url.logoutUrl}">${msg("doSignOut")}</a></li>
