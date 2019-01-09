@@ -32,7 +32,7 @@
                 <div class="container">
                     <ul class="nav navbar-nav navbar-utility">
                         <#if realm.internationalizationEnabled>
-                        <#if (locale.supported?size > 0) >  <#-- Remove dropdown if there is 1 language -->
+                        <#if (locale.supported?size > 1) >  <#-- Remove dropdown if there is 1 language -->
                             <li>
                                 <div class="kc-dropdown" id="kc-locale-dropdown">
                                     <a href="#" id="kc-current-locale-link">${locale.current}</a>
