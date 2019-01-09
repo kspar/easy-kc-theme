@@ -13,6 +13,7 @@
             <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
         </#list>
     </#if>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <#if properties.scripts?has_content>
         <#list properties.scripts?split(' ') as script>
             <script type="text/javascript" src="${url.resourcesPath}/${script}"></script>
@@ -25,7 +26,10 @@
         <nav class="navbar" role="navigation">
             <div class="navbar-header">
                 <div class="container">
-                    <h1 class="navbar-title">Keycloak</h1>
+                    <a href="https://lahendus.ut.ee/courses.html" class="back-link">
+                        <i class="material-icons">arrow_back</i>
+                        <span>Tagasi</span>
+                    </a>
                 </div>
             </div>
             <div class="navbar-collapse navbar-collapse-1">

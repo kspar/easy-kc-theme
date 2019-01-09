@@ -1,5 +1,11 @@
 
 
+/* Navbar */
+
+.back-link {
+    color: #fff;
+} 
+
 
 /* Sidebar inactive link */
 
@@ -50,24 +56,6 @@
 a {
     color: #3c9440;
 }
-
-/*.login-pf a:hover {*/
-    /*color: #3c9440;*/
-/*}*/
-
-/*.login-pf a:focus {*/
-    /*color: #aaa;*/
-    /*outline: none;*/
-/*}*/
-
-/*div.kc-logo-text {*/
-    /*background-image: none;*/
-/*}*/
-
-/*div.kc-logo-text span {*/
-    /*display: inline;*/
-    /*color: #363636;*/
-/*}*/
 
 .form-control:focus {
     border-color: #78D47E;
