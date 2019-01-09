@@ -1,3 +1,27 @@
 
 
 
+/* Sidebar inactive link */
+
+.bs-sidebar ul li a {
+    color: #4d5258;
+}
+
+.bs-sidebar ul li a:hover, .bs-sidebar ul li a:focus {
+    border: none;
+    background-color: #e1ffde;
+}
+
+
+
+/* Sidebar active link */
+
+.bs-sidebar ul li.active a {
+    background-color: #c9ffc4;
+    border-color: #03f100;
+    background-image: none;
+}
+
+.bs-sidebar ul li.active a:hover {
+    background-color: #b4ffad;
+}
