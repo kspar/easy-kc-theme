@@ -39,13 +39,13 @@
 .btn-primary {
     background-color: #41a045;
     background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
-    border: none;
+    border-color: #6cbf71;
 }
 
 .btn-primary:hover {
     background-color: #3c9440;
     background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
-    border: none;
+    border-color: #64b169;
 }
 
 
