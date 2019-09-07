@@ -69,4 +69,10 @@ a {
 .btn:focus, .btn:active:focus {
     outline: none;
 }
+.navbar-title{
+    background-image: unset;
+}
 
+#kc-locale-dropdown {
+    display: none;
+}
