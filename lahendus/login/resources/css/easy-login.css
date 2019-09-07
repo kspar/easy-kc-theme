@@ -50,6 +50,7 @@ div.kc-logo-text {
 div.kc-logo-text span {
 	display: inline-block;
 	color: #363636;
+	font-family: 'Sniglet', cursive;
 }
 
 .form-control:focus {
