@@ -64,4 +64,8 @@ div.kc-logo-text span {
 	outline: none;
 }
 
+.kc-logo-text ::before {
+	content: url(../img/logo.png);
+}
+
 
