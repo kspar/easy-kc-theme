@@ -49,7 +49,7 @@ div.kc-logo-text {
 
 div.kc-logo-text span {
 	display: inline-block;
-	color: #363636;
+	color: #969696;
 	font-family: 'Sniglet', cursive;
 }
 
@@ -76,5 +76,11 @@ div.kc-logo-text span {
 	width: 55px;
 	height: 55px;
 }
+.login-pf-header {
+	display: none;
+}
 
+.card-pf {
+	padding: 40px;
+}
 
