@@ -1,25 +1,10 @@
 
+/* Sidebar link */
 
-/* Navbar */
-
-.back-link {
-    color: #fff;
-} 
-
-
-/* Sidebar inactive link */
-
-.bs-sidebar ul li a {
-    color: #4d5258;
-}
-
-.bs-sidebar ul li a:hover, .bs-sidebar ul li a:focus {
+.bs-sidebar ul li a:hover,
+.bs-sidebar ul li a:focus {
     background-color: rgba(3, 3, 3, 0.04);
 }
-
-
-
-/* Sidebar active link */
 
 .bs-sidebar ul li.active a {
     background-color: #c9ffc4;
@@ -30,8 +15,6 @@
 .bs-sidebar ul li.active a:hover {
     background-color: #b4ffad;
 }
-
-
 
 
 /* Main content */
@@ -47,7 +30,6 @@
     background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
     border-color: #64b169;
 }
-
 
 .btn[disabled] {
     background-color: #ddd !important;
@@ -69,6 +51,7 @@ a {
 .btn:focus, .btn:active:focus {
     outline: none;
 }
+
 .navbar-title{
     background-image: unset;
 }
