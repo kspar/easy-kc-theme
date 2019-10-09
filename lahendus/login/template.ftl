@@ -14,14 +14,14 @@
     </#if>
     <title>${msg("loginTitle",(realm.displayName!''))}</title>
     <link rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
-    <#if properties.styles?has_content>
-        <#list properties.styles?split(' ') as style>
-            <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
-        </#list>
-    </#if>
     <#if properties.stylesExternal?has_content>
         <#list properties.stylesExternal?split(' ') as style>
             <link href="${style}" rel="stylesheet" />
+        </#list>
+    </#if>
+    <#if properties.styles?has_content>
+        <#list properties.styles?split(' ') as style>
+            <link href="${url.resourcesPath}/${style}" rel="stylesheet" />
         </#list>
     </#if>
     <#if properties.scripts?has_content>
