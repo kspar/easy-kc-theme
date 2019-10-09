@@ -81,3 +81,9 @@ div.kc-logo-text span {
 	content: "\F19C";
 	font: normal normal normal 120%/1.65 FontAwesome;
 }
+
+#zocial-google::before {
+	content: "\F1A0";
+	font: normal normal normal 120%/1.65 FontAwesome;
+}
+
