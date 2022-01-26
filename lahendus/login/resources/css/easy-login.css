@@ -42,6 +42,10 @@ a {
 	color: #3c9440;
 }
 
+input{
+	outline: none;
+}
+
 .login-pf a:hover {
 	color: #3c9440;
 }
@@ -70,6 +74,8 @@ div.kc-logo-text span {
 .pf-c-form-control:hover {
 	border-color: #67b66c;
 }
+.pf-c-form-control[aria-invalid="true"] { border-bottom-width: 1px; }
+
 
 .btn:focus, .btn:active:focus {
 	outline: none;
