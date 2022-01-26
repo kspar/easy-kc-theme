@@ -1,5 +1,6 @@
 :root {
-	--pf-global--primary-color--100: #41a045;
+	--pf-global--primary-color--100: #6cbf71;
+	--pf-global--primary-color--200: #41a045;
 }
 
 .login-pf body {
