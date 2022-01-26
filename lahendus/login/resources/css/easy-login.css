@@ -1,4 +1,6 @@
-
+:root {
+	--pf-global--primary-color--100: #41a045;
+}
 
 .login-pf body {
 	background: url(../img/bg.svg) no-repeat center center fixed;
@@ -19,13 +21,13 @@
 	margin-bottom: 20px;
 }
 
-.btn-primary {
+.pf-m-primary  {
 	background-color: #41a045;
 	background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
 	border: none;
 }
 
-.btn-primary:hover {
+.pf-m-primary:hover {
 	background-color: #3c9440;
 	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
 	border: none;
@@ -59,12 +61,12 @@ div.kc-logo-text span {
 	font-family: 'Sniglet', cursive;
 }
 
-.form-control:focus {
+.pf-c-form-control:focus {
 	border-color: #78D47E;
 	box-shadow: 0 0 10px rgba(123, 219, 130, 0.6);
 }
 
-.form-control:hover {
+.pf-c-form-control:hover {
 	border-color: #67b66c;
 }
 
@@ -81,15 +83,5 @@ div.kc-logo-text span {
 	background-size: 50px;
 	width: 55px;
 	height: 55px;
-}
-
-#zocial-ut::before {
-	content: "\F19C";
-	font: normal normal normal 120%/1.65 FontAwesome;
-}
-
-#zocial-google::before {
-	content: "\F1A0";
-	font: normal normal normal 120%/1.65 FontAwesome;
 }
 
