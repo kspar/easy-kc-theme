@@ -1,94 +1,98 @@
 :root {
-	--pf-global--primary-color--100: #6cbf71;
-	--pf-global--primary-color--200: #41a045;
+    --pf-global--primary-color--100: #6cbf71;
+    --pf-global--primary-color--200: #41a045;
+    --pf-global--active-color--100: #6cbf71;
 }
 
 .login-pf body {
-	background: url(../img/bg.svg) no-repeat center center fixed;
-	background-size: cover;
-	height: auto;
-	min-height: 100%;
+    background: url(../img/bg.svg) no-repeat center center fixed;
+    background-size: cover;
+    height: auto;
+    min-height: 100%;
 }
 
 .login-pf-page {
-	padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .login-pf-page .card-pf {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .login-pf-page .login-pf-page-header {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-.pf-m-primary  {
-	background-color: #41a045;
-	background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
-	border: none;
+.pf-m-primary {
+    background-color: #41a045;
+    background-image: linear-gradient(to bottom, #6cbf71 0%, #41a045 100%);
+    border: none;
 }
 
 .pf-m-primary:hover {
-	background-color: #3c9440;
-	background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
-	border: none;
+    background-color: #3c9440;
+    background-image: linear-gradient(to bottom, #64b169 0%, #3c9440 100%);
+    border: none;
 }
 
 .btn[disabled] {
-	background-color: #ddd !important;
+    background-color: #ddd !important;
 }
 
 a {
-	color: #3c9440;
+    color: #3c9440;
 }
 
-input{
-	outline: none;
+input {
+    outline: none;
 }
 
 .login-pf a:hover {
-	color: #3c9440;
+    color: #3c9440;
 }
 
 .login-pf a:focus {
     color: #aaa;
-	outline: none;
+    outline: none;
 }
 
 div.kc-logo-text {
-	background-image: none;
-	display: inline;
+    background-image: none;
+    display: inline;
 }
 
 div.kc-logo-text span {
-	display: inline-block;
-	color: #969696;
-	font-family: 'Sniglet', cursive;
+    display: inline-block;
+    color: #969696;
+    font-family: 'Sniglet', cursive;
 }
 
 .pf-c-form-control:focus {
-	border-color: #78D47E;
-	box-shadow: 0 0 10px rgba(123, 219, 130, 0.6);
+    border-color: #78D47E;
+    box-shadow: 0 0 10px rgba(123, 219, 130, 0.6);
 }
 
 .pf-c-form-control:hover {
-	border-color: #67b66c;
+    border-color: #67b66c;
 }
-.pf-c-form-control[aria-invalid="true"] { border-bottom-width: 1px; }
+
+.pf-c-form-control[aria-invalid="true"] {
+    border-bottom-width: 1px;
+}
 
 
 .btn:focus, .btn:active:focus {
-	outline: none;
+    outline: none;
 }
 
 .kc-logo-text::before {
-	content: '';
-	display: inline-block;
-	vertical-align: middle;
-	background-image: url(../img/logo.png);
-	background-repeat: no-repeat;
-	background-size: 50px;
-	width: 55px;
-	height: 55px;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    width: 55px;
+    height: 55px;
 }
 
