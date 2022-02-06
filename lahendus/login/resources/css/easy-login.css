@@ -83,7 +83,7 @@ div.kc-logo-text span {
 }
 
 .pf-c-form-control {
-    border-color: var(--pf-global--BorderColor--300) var(--pf-global--BorderColor--300) var(--pf-global--BorderColor--300) var(--pf-global--BorderColor--300);
+    border-color: var(--pf-global--BorderColor--100);
 }
 
 
