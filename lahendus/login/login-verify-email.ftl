@@ -8,12 +8,15 @@
         <p class="instruction">
             ${msg("emailVerifyInstruction2")}
             <br/>
-            <a href="${url.loginAction}">${msg("doClickHere")}</a> ${msg("emailVerifyInstruction3")}
+            <#-- Custom edit remove space -->
+            <a href="${url.loginAction}">${msg("doClickHere")}</a>${msg("emailVerifyInstruction3")}
+
+            <#--Custom edit support logout-->
+            <br/>
+            ${msg("ez.or")} <a id="logouthref" style="margin-left: 0">${msg("ez.doSignOut")}</a>.
+            <#--Check if we are on dev or prod-->
+            <script>document.getElementById('logouthref').href = "/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2F" + (window.location.host.startsWith("dev.") ? "dev." : "") + "lahendus.ut.ee";</script>
+            <#--Custom edit support logout-->
         </p>
-    <#--Custom edit support logout-->
-        <p class="instruction">${msg("ez.or")} <a id="logouthref">${msg("ez.doSignOut")}</a>.</p>
-    <#--Check if we are on dev or prod-->
-        <script>document.getElementById('logouthref').href = "/auth/realms/master/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2F" + (window.location.host.startsWith("dev.") ? "dev." : "") + "lahendus.ut.ee";</script>
-    <#--Custom edit support logout-->
     </#if>
 </@layout.registrationLayout>
