@@ -161,7 +161,7 @@
         let usernameField = document.getElementById('username');
 
         if (email) emailField.value = email;
-        if (emailDisabled) emailField.disabled = true;
+        if (emailDisabled) emailField.readOnly = true;
         if (givenName) givenNameField.value = givenName;
         if (familyName) familyNameField.value = familyName;
         if (username) usernameField.value = username;
