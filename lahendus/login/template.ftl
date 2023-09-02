@@ -65,6 +65,36 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Custom script start (by chatgpt) -->
+                    <script>
+                        // Allow fields to be prefilled by query params
+                        document.addEventListener("DOMContentLoaded", () => {
+
+                            // get current URL and parameters
+                            const currentURL = new URL(window.location);
+
+                            let paramsToKeep = ["ezHintEmail", "ezHintEmailDisabled",
+                                "ezHintGivenName", "ezHintFamilyName", "ezHintUsername"];
+
+                            let anchors = document.querySelectorAll('#kc-locale-dropdown > ul > li > a');
+
+                            for(let i = 0; i < anchors.length; i++) {
+                                let anchor = anchors[i];
+                                let anchorURL = new URL(anchor.href);
+
+                                paramsToKeep.forEach(paramName => {
+                                    let paramValue = currentURL.searchParams.get(paramName);
+                                    if(paramValue !== null) {
+                                        anchorURL.searchParams.set(paramName, paramValue);
+                                    }
+                                });
+
+                                // update anchor href with new URL
+                                anchor.href = anchorURL.toString();
+                            }
+                        });
+                    </script>
+                    <!-- Custom script end -->
                 </#if>
                 <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
                     <#if displayRequiredFields>
