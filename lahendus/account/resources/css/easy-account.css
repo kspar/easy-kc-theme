@@ -56,10 +56,6 @@ a {
     background-image: unset;
 }
 
-#kc-locale-dropdown {
-    display: none;
-}
-
 #referrer {
     margin-right: 1rem;
 }
