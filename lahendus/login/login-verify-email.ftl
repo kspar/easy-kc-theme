@@ -9,7 +9,7 @@
             ${msg("emailVerifyInstruction2")}
             <br/>
             <#-- Custom edit remove space -->
-            <a href="${url.loginAction}">${msg("doClickHere")}</a>${msg("emailVerifyInstruction3")}
+            <a href="${url.loginAction}">${msg("doClickHere")}</a>${kcSanitize(msg("emailVerifyInstruction3"))?no_esc}
 
             <#--Custom edit support logout-->
             <br/>
