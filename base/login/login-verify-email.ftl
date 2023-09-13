@@ -8,7 +8,7 @@
         <p class="instruction">
             ${msg("emailVerifyInstruction2")}
             <br/>
-            <a href="${url.loginAction}">${msg("doClickHere")}</a> ${msg("emailVerifyInstruction3")}
+            <a href="${url.loginAction}">${msg("doClickHere")}</a>${kcSanitize(msg("emailVerifyInstruction3"))?no_esc}
         </p>
     </#if>
 </@layout.registrationLayout>
