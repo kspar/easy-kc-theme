@@ -1,4 +1,6 @@
     <#import "template.ftl" as layout>
+    <#import "password-commons.ftl" as passwordCommons>
+
     <@layout.registrationLayout; section>
     <#if section = "title">
         title
@@ -13,7 +15,9 @@
                 <input type="hidden" id="attestationObject" name="attestationObject"/>
                 <input type="hidden" id="publicKeyCredentialId" name="publicKeyCredentialId"/>
                 <input type="hidden" id="authenticatorLabel" name="authenticatorLabel"/>
+                <input type="hidden" id="transports" name="transports"/>
                 <input type="hidden" id="error" name="error"/>
+                <@passwordCommons.logoutOtherSessions/>
             </div>
         </form>
 
@@ -35,7 +39,7 @@
                 let userid = "${userid}";
                 let username = "${username}";
 
-                let signatureAlgorithms = "${signatureAlgorithms}";
+                let signatureAlgorithms =[<#list signatureAlgorithms as sigAlg>${sigAlg},</#list>]
                 let pubKeyCredParams = getPubKeyCredParams(signatureAlgorithms);
 
                 let rpEntityName = "${rpEntityName}";
@@ -86,7 +90,7 @@
                 if (isAuthenticatorSelectionSpecified) publicKey.authenticatorSelection = authenticatorSelection;
 
                 let createTimeout = ${createTimeout};
-                if (createTimeout != 0) publicKey.timeout = createTimeout * 1000;
+                if (createTimeout !== 0) publicKey.timeout = createTimeout * 1000;
 
                 let excludeCredentialIds = "${excludeCredentialIds}";
                 let excludeCredentials = getExcludeCredentials(excludeCredentialIds);
@@ -103,6 +107,15 @@
                         $("#attestationObject").val(base64url.encode(new Uint8Array(attestationObject), {pad: false}));
                         $("#publicKeyCredentialId").val(base64url.encode(new Uint8Array(publicKeyCredentialId), {pad: false}));
 
+                        if (typeof result.response.getTransports === "function") {
+                            let transports = result.response.getTransports();
+                            if (transports) {
+                                $("#transports").val(getTransportsAsString(transports));
+                            }
+                        } else {
+                            console.log("Your browser is not able to recognize supported transport media for the authenticator.");
+                        }
+
                         let initLabel = "WebAuthn Authenticator (Default Label)";
                         let labelResult = window.prompt("Please input your registered authenticator's label", initLabel);
                         if (labelResult === null) labelResult = initLabel;
@@ -118,13 +131,12 @@
                     });
             }
 
-            function getPubKeyCredParams(signatureAlgorithms) {
+            function getPubKeyCredParams(signatureAlgorithmsList) {
                 let pubKeyCredParams = [];
-                if (signatureAlgorithms === "") {
+                if (signatureAlgorithmsList === []) {
                     pubKeyCredParams.push({type: "public-key", alg: -7});
                     return pubKeyCredParams;
                 }
-                let signatureAlgorithmsList = signatureAlgorithms.split(',');
 
                 for (let i = 0; i < signatureAlgorithmsList.length; i++) {
                     pubKeyCredParams.push({
@@ -149,6 +161,18 @@
                     });
                 }
                 return excludeCredentials;
+            }
+
+            function getTransportsAsString(transportsList) {
+                if (transportsList === '' || transportsList.constructor !== Array) return "";
+
+                let transportsString = "";
+
+                for (let i = 0; i < transportsList.length; i++) {
+                    transportsString += transportsList[i] + ",";
+                }
+
+                return transportsString.slice(0, -1);
             }
         </script>
 

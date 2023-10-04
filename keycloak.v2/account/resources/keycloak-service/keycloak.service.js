@@ -62,9 +62,9 @@ export class KeycloakService {
   getToken() {
     return new Promise((resolve, reject) => {
       if (this.keycloakAuth.token) {
-        this.keycloakAuth.updateToken(5).success(() => {
+        this.keycloakAuth.updateToken(5).then(() => {
           resolve(this.keycloakAuth.token);
-        }).error(() => {
+        }).catch(() => {
           reject('Failed to refresh token');
         });
       } else {
