@@ -137,6 +137,10 @@
             document.getElementById("landingSignOutButton").style.display='inline';
             document.getElementById("landingSignOutLink").style.display='inline';
             document.getElementById("landingLoggedInUser").innerHTML = loggedInUserName('${msg("unknownUser")}', '${msg("fullName")}');
+
+            // Start custom 1: direct/set hash from this index.ftl panel to account
+            location.hash = '#/personal-info';
+            // End custom 1: direct/set hash from this index.ftl panel to account
         }
 
         loadjs("/Main.js");
@@ -191,7 +195,7 @@
                             ${msg("backTo",referrerName)}
                         </a>
                     </div>
-                <#-- Start custom 1: always allow going back to lahendsus-->
+                <#-- Start custom 2: always allow going back to Lahendus-->
                 <#else>
                     <div class="pf-c-page__header-tools-group pf-m-icons pf-u-display-none pf-u-display-flex-on-md">
                         <a id="landingReferrerLink" class="pf-c-button pf-m-link" tabindex="0">
@@ -202,7 +206,7 @@
                     <script>
                         document.getElementById('landingReferrerLink').href = "https://" + (window.location.host.startsWith("dev.") ? "dev." : "") + "lahendus.ut.ee";
                     </script>
-                <#-- End custom 1: always allow going back to lahendus-->
+                <#-- End custom 2: always allow going back to Lahendus-->
                 </#if>
 
                 <div class="pf-c-page__header-tools-group pf-m-icons pf-u-display-none pf-u-display-flex-on-md pf-u-mr-md">
