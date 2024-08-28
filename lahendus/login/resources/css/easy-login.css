@@ -1,3 +1,6 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500|Sniglet&display=swap');
+
 :root {
     --pf-global--primary-color--100: #6cbf71;
     --pf-global--primary-color--200: #41a045;
