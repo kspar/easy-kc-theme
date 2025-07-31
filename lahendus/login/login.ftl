@@ -82,13 +82,10 @@
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
             <div id="kc-registration-container">
                 <div id="kc-registration">
-                    <span>${msg("noAccount")} <a tabindex="8"
-                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                    <span>${msg("noAccount")} <a tabindex="8" href="${url.registrationUrl}">${msg("doRegister")}</a></span> | <a style="margin-left: 0;" href="https://lahendus.ut.ee/tos">${msg("termsLink")}</a>
                 </div>
             </div>
         </#if>
-
-        <div><span>${msg("termsSentence1")}<a href="https://lahendus.ut.ee/tos">${msg("termsSentence2")}</a></span></div>
 
 
     <#elseif section = "socialProviders" >
