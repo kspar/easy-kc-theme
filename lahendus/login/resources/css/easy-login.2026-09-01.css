@@ -148,10 +148,18 @@
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
-/* The background pattern is a light-grey SVG; on a dark ground it would be a bright sheet, so it is
- * dropped rather than blended. */
+/* The same artwork, redrawn for a dark ground.
+ *
+ * The pattern is 80 greys from #cecece to #f4f4f4 — a bright sheet if shown unchanged behind a dark
+ * card, and a flat empty page if simply dropped, which is what an earlier version of this file did.
+ * `bg-dark.svg` is generated from `bg.svg` with the greys' luminance inverted and compressed toward
+ * the page colour, so the texture reads at the same strength without glowing. The one hue in the
+ * artwork, the Lahendus green, is left alone — inverting it produces a purple logo. */
 @media (prefers-color-scheme: dark) {
-    .login-pf body { background-image: none; }
+    .login-pf body {
+        background-image: url(../img/bg-dark.svg);
+        background-blend-mode: normal;
+    }
 }
 
 .login-pf-page { padding-bottom: 40px; }
