@@ -347,7 +347,22 @@ a.kc-social-item.pf-c-button {
     -webkit-mask-size: 18px 18px;
     mask-size: 18px 18px;
 }
-.kc-social-item .kc-social-provider-name { text-align: left; }
+/* Keycloak's own login.css nudges the label 15px left:
+ *
+ *     .kc-social-icon-text { left: -15px; }
+ *
+ * which made sense when the icon was floated and the label centred — it pulled the two visually
+ * together. In a flex row it drags the label back over the icon it is meant to sit beside, which is
+ * exactly what it looked like: correct 12px gap in the layout, then the text shifted on top of it.
+ *
+ * The flex row already positions both, so the nudge has to go. `position: static` rather than
+ * `left: 0` because the offset is the only thing the relative positioning was for. */
+.kc-social-item .kc-social-provider-name,
+.kc-social-item .kc-social-icon-text {
+    position: static;
+    left: auto;
+    text-align: left;
+}
 .kc-social-item:hover i.kc-social-provider-logo { color: var(--lah-primary-text); }
 
 /* The University of Tartu button's mark, inline instead of the whole of Font Awesome 4.7.0 from a
