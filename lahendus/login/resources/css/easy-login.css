@@ -228,6 +228,23 @@ input:focus-visible:focus-visible,
 .pf-c-form-control[aria-invalid="true"] { border-bottom-width: 1px; }
 .pf-c-form__label-text { margin-bottom: 3px; color: var(--lah-text); }
 
+/* The password field is an input group — the field plus the show/hide button — and rounding all
+ * four corners of the input leaves a notch where the two meet. Round the outside of the pair only.
+ * Visible on dark before this, where the field's border reads against the surface. */
+.pf-c-input-group > .pf-c-form-control:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+.pf-c-input-group > .pf-c-button:last-child {
+    border: 1px solid var(--lah-divider);
+    border-left: none;
+    border-top-right-radius: var(--lah-radius-ctrl);
+    border-bottom-right-radius: var(--lah-radius-ctrl);
+    color: var(--lah-text-2);
+}
+.pf-c-input-group > .pf-c-button:last-child:hover { color: var(--lah-text); }
+
 /* ── buttons ────────────────────────────────────────────────────────────────────────────────── */
 /* Flat, not a gradient. The old gradient ran #6cbf71 → #41a045, and white on its top stop is
  * 2.25:1 — the most-pressed control on the site, failing AA by more than half. One flat
