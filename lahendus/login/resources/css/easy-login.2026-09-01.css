@@ -118,6 +118,21 @@
         --lah-shadow:   rgba(0, 0, 0, .5);
         --lah-disabled: #3a3a3a;
         --lah-subtle:   #262626;
+
+        /* PatternFly's own surface variables, which are white by default and which Keycloak's
+         * login.css reads directly — `#kc-locale ul` takes its background from the first of these.
+         * Restyling only the selectors this theme knows about left the language menu a white sheet
+         * on a dark page, so the variables are redefined at the source instead. */
+        --pf-global--BackgroundColor--100: var(--lah-paper);
+        --pf-global--BackgroundColor--200: var(--lah-page);
+        --pf-global--BackgroundColor--light-100: var(--lah-paper);
+        --pf-global--BackgroundColor--light-300: var(--lah-subtle);
+        --pf-global--Color--100: var(--lah-text);
+        --pf-global--Color--200: var(--lah-text-2);
+        --pf-global--Color--light-100: var(--lah-text);
+        --pf-global--BorderColor--100: var(--lah-divider);
+        --pf-global--BorderColor--300: var(--lah-divider);
+
         color-scheme: dark;
     }
 }
