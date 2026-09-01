@@ -303,8 +303,42 @@ input[type="submit"].pf-m-primary {
 .btn-group-lg > .btn, .btn-lg { font-size: 15px; font-weight: 500; }
 
 /* ── identity providers ─────────────────────────────────────────────────────────────────────── */
-.kc-social-item { margin-bottom: .7rem; border-radius: var(--lah-radius-ctrl); }
-.kc-social-provider-logo { font-size: 18px; line-height: 1.3; }
+/* One icon slot and one text start, identical on every row.
+ *
+ * Keycloak floats the icon left and centres the label, so each label sits wherever its own width
+ * puts it: measured, "Tartu Ülikool" began at x=592 and "Google" at x=616 in the same 420px button.
+ * The icons did share a left edge but not a size — the UT mask rendered 18×18 and Font Awesome's
+ * Google glyph 30×25 — so neither the icons nor the words lined up with each other.
+ *
+ * A flex row fixes both at once: a 22px slot the icon is centred inside whatever its intrinsic box,
+ * then the label, left-aligned so every provider's text starts at the same place. */
+.kc-social-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-bottom: .7rem;
+    border-radius: var(--lah-radius-ctrl);
+}
+.kc-social-item .kc-social-provider-logo {
+    float: none;
+    flex: 0 0 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+}
+/* The masked icon sizes from mask-size rather than its box, so it matches the glyph beside it
+ * instead of stretching to fill the slot. */
+.kc-social-item .kc-social-provider-logo.lahendus-idp-ut {
+    -webkit-mask-size: 18px 18px;
+    mask-size: 18px 18px;
+}
+.kc-social-item .kc-social-provider-name { text-align: left; }
 .kc-social-item:hover i.kc-social-provider-logo { color: var(--lah-primary-text); }
 
 /* The University of Tartu button's mark, inline instead of the whole of Font Awesome 4.7.0 from a
