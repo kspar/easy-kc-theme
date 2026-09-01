@@ -312,6 +312,35 @@ i.lahendus-idp-ut {
     mask: var(--lah-university-icon) no-repeat center / contain;
 }
 
+/* ── surfaces PatternFly paints itself ──────────────────────────────────────────────────────── */
+/* Redefining --pf-global--BackgroundColor--100 on :root is not enough for these two, and it took
+ * measuring to believe it: the root variable does resolve to the dark surface, but PatternFly
+ * re-derives the same name per component from --light-100 further down the cascade, so the value
+ * that reaches the element is still white. Rather than chase that chain through two PatternFly
+ * generations, set the properties directly — from the tokens, so both palettes are covered by one
+ * rule.
+ *
+ * Both were reported from the rendered page rather than found in the stylesheet: the language menu
+ * stayed a white sheet on a dark background, and the input group's white showed around the password
+ * field as an inconsistent border. */
+.pf-c-input-group { background-color: transparent; }
+
+#kc-locale ul,
+.pf-c-dropdown__menu {
+    background-color: var(--lah-paper);
+    border: 1px solid var(--lah-divider);
+    border-radius: var(--lah-radius-ctrl);
+    box-shadow: 0 2px 8px var(--lah-shadow);
+}
+#kc-locale-dropdown a,
+#kc-locale-dropdown button,
+.pf-c-dropdown__menu-item { color: var(--lah-text-2); }
+#kc-locale-dropdown a:hover,
+.pf-c-dropdown__menu-item:hover {
+    background-color: var(--lah-subtle);
+    color: var(--lah-text);
+}
+
 /* ── footer band ────────────────────────────────────────────────────────────────────────────── */
 #kc-info-wrapper {
     background-color: var(--lah-subtle);
