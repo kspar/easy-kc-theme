@@ -1,44 +1,274 @@
-/* Sniglet, served from this theme rather than from Google.
+/* Lahendus login theme — the whole of it.
  *
- * This file used to open with two @import lines — Font Awesome 4.7.0 from cdnjs and Roboto+Sniglet
- * from Google — duplicating what theme.properties also declared in stylesExternal. Both are gone.
- * Nobody should have to contact Cloudflare and Google to look at a login form, and the login page
- * of an identity provider is the last place to make that trade for one icon and one wordmark.
+ * This file used to be two: `easy-login.css` (68 lines) and `easy-login-prev.css` (165), with the
+ * one named "prev" loading last and therefore winning every conflict it took part in. They are
+ * merged here, and every colour that was a literal hex scattered through them is now a token.
  *
- * Roboto went with them: it was imported and never applied to a single selector.
+ * **The palette is the web application's, not this theme's own** (EZ-1798, "one green"). The login
+ * page and the app it guards were two different greens for no reason anybody could name — five of
+ * them, in fact, all within a few percent of each other. What follows is `web/src/theme/theme.ts`,
+ * value for value, including its dark palette and its reasoning about which green survives on a
+ * dark surface.
  *
- * Both subsets are here because Estonian needs them: ä, ö, ü and õ are in latin, but š and ž are
- * in latin-ext, and the wordmark is the one place this face is used. Together they are 18 kB.
+ * Nothing here is fetched from a third party. Roboto is the same @fontsource build the application
+ * ships; Sniglet is the wordmark face, which the app also uses.
  */
+
+/* ── fonts ──────────────────────────────────────────────────────────────────────────────────── */
+/* Roboto, because theme.ts says
+ *     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif"
+ * and the login page has been rendering in PatternFly's Open Sans. It used to *import* Roboto from
+ * Google and then apply it to nothing at all, which is its own kind of answer.
+ *
+ * latin-ext is not optional for Estonian: š and ž live there. ä ö ü õ are in latin. */
 @font-face {
-    font-family: 'Sniglet';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
+    font-family: 'Roboto'; font-style: normal; font-weight: 400; font-display: swap;
+    src: url(../fonts/roboto-latin-400-normal.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+                   U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Roboto'; font-style: normal; font-weight: 400; font-display: swap;
+    src: url(../fonts/roboto-latin-ext-400-normal.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+                   U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+                   U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-family: 'Roboto'; font-style: normal; font-weight: 500; font-display: swap;
+    src: url(../fonts/roboto-latin-500-normal.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+                   U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Roboto'; font-style: normal; font-weight: 500; font-display: swap;
+    src: url(../fonts/roboto-latin-ext-500-normal.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+                   U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+                   U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-family: 'Sniglet'; font-style: normal; font-weight: 400; font-display: swap;
     src: url(../fonts/sniglet-400-latin.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
-                   U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-                   U+FEFF, U+FFFD;
+                   U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
-    font-family: 'Sniglet';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
+    font-family: 'Sniglet'; font-style: normal; font-weight: 400; font-display: swap;
     src: url(../fonts/sniglet-400-latin-ext.woff2) format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
                    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
                    U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* The University of Tartu identity-provider button.
+/* ── tokens ─────────────────────────────────────────────────────────────────────────────────── */
+:root {
+    /* The one green, from web/src/theme/theme.ts. Do not add a sixth. */
+    --lah-green-500: #22c55e;
+    --lah-green-700: #15803d;
+    --lah-green-800: #166534;
+
+    /* Two primaries, and the difference is the whole of the shade rule from EZ-1798.
+     *   -bg   is what white text sits on. #15803d gives 5.02:1, in either mode.
+     *   -text is green used AS text. On light that is the same 700 (5.02:1 on white); on dark it
+     *         steps to 500, because 700 as small text on #1e1e1e is 3.32:1 and fails. */
+    --lah-primary-bg:    var(--lah-green-700);
+    --lah-primary-hover: var(--lah-green-800);
+    --lah-primary-text:  var(--lah-green-700);
+    --lah-on-primary:    #ffffff;
+
+    --lah-page:     #f5f5f5;
+    --lah-paper:    #ffffff;
+    --lah-text:     #212121;
+    --lah-text-2:   #6b6b6b;
+    --lah-divider:  #e0e0e0;
+    --lah-field-bg: #ffffff;
+    --lah-shadow:   rgba(0, 0, 0, .12);
+    --lah-disabled: #dddddd;
+    --lah-subtle:   #f5f5f5;
+
+    --lah-radius:      12px;
+    --lah-radius-ctrl:  8px;
+
+    --lah-university-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M320 32 0 160l320 128 320-128L320 32zM96 232v120c0 35 100 56 224 56s224-21 224-56V232l-224 90-224-90zM16 208v96l-8 88h48l-8-88v-96h-32z'/%3E%3C/svg%3E");
+
+    /* PatternFly v4 reads these for its own components; pointing them at the tokens keeps the parts
+     * of the page this file does not style from drifting back to Red Hat blue. */
+    --pf-global--primary-color--100: var(--lah-primary-bg);
+    --pf-global--primary-color--200: var(--lah-primary-hover);
+    --pf-global--active-color--100:  var(--lah-primary-bg);
+
+    color-scheme: light;
+}
+
+/* Dark, from the same theme.ts: background.default #121212, background.paper #1e1e1e,
+ * text.primary #e0e0e0, text.secondary #9e9e9e, divider #333.
  *
- * `kcLogoIdP-ut` used to be `fa fa-university`, which pulled the whole of Font Awesome 4.7.0 — a
- * 2016 icon set — across the network for this one glyph, and left the button unmarked whenever
- * cdnjs was slow or blocked. The same shape is inlined here instead: no request, no dependency,
- * and it inherits the surrounding text colour.
- */
+ * The application already has a dark mode; the login page in front of it did not, so a person with
+ * a dark system got one full-brightness white page on the way in. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --lah-primary-text: var(--lah-green-500);   /* the shade rule */
+        --lah-page:     #121212;
+        --lah-paper:    #1e1e1e;
+        --lah-text:     #e0e0e0;
+        --lah-text-2:   #9e9e9e;
+        --lah-divider:  #333333;
+        --lah-field-bg: #262626;
+        --lah-shadow:   rgba(0, 0, 0, .5);
+        --lah-disabled: #3a3a3a;
+        --lah-subtle:   #262626;
+        color-scheme: dark;
+    }
+}
+
+/* ── page and card ──────────────────────────────────────────────────────────────────────────── */
+.login-pf body {
+    background: var(--lah-page) url(../img/bg.svg) no-repeat center center fixed;
+    background-size: cover;
+    background-blend-mode: multiply;
+    height: auto;
+    min-height: 100%;
+    color: var(--lah-text);
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* The background pattern is a light-grey SVG; on a dark ground it would be a bright sheet, so it is
+ * dropped rather than blended. */
+@media (prefers-color-scheme: dark) {
+    .login-pf body { background-image: none; }
+}
+
+.login-pf-page { padding-bottom: 40px; }
+.login-pf-page .card-pf {
+    margin-bottom: 40px;
+    background: var(--lah-paper);
+    color: var(--lah-text);
+    border-radius: var(--lah-radius);
+    box-shadow: 0 1px 3px var(--lah-shadow);
+}
+.login-pf-page .login-pf-page-header { margin-bottom: 20px; }
+
+body, .login-pf-page, .card-pf, .pf-c-form__label-text, label, p, span, h1 { color: var(--lah-text); }
+.card-pf hr { border-top-color: var(--lah-divider); }
+hr { margin-top: 25px; }
+.kc-social-section hr { margin-bottom: 25px; }
+
+/* ── the heading, and Keycloak's grid ───────────────────────────────────────────────────────── */
+/* Keycloak's template.ftl puts the page title in a Bootstrap `col-md-10` whenever a page sets
+ * displayRequiredFields — registration does — beside a full-width row holding the "* required
+ * fields" note. The title then centres inside ten of twelve columns and lands 35px left of the
+ * card's centre at any width above 768px. Measured, not guessed.
+ *
+ * Widening that one cell fixes every page with required fields and forks no template. */
+.login-pf-header .col-md-10 {
+    float: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+.login-pf-header .subtitle { color: var(--lah-text-2); }
+h1#kc-page-title { margin-top: 10px; font-weight: 400; }
+
+/* ── the wordmark ───────────────────────────────────────────────────────────────────────────── */
+div.kc-logo-text { background-image: none; display: inline; }
+div.kc-logo-text span {
+    display: inline-block;
+    color: var(--lah-text-2);
+    font-family: 'Sniglet', cursive;
+}
+.kc-logo-text::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    width: 55px;
+    height: 55px;
+}
+
+/* ── links ──────────────────────────────────────────────────────────────────────────────────── */
+a, .login-pf a { color: var(--lah-primary-text); }
+a:hover, .login-pf a:hover { color: var(--lah-primary-hover); }
+
+/* Dark keeps green-500 on hover too: 800 on #1e1e1e is 2.1:1 and would vanish. */
+@media (prefers-color-scheme: dark) {
+    a:hover, .login-pf a:hover { color: var(--lah-green-500); filter: brightness(1.15); }
+}
+
+/* ── focus ──────────────────────────────────────────────────────────────────────────────────── */
+/* This theme used to carry `outline: none` on inputs, buttons and links, and to make a focused link
+ * *lighter* (#aaa, 2.32:1). Tabbing through the form showed nothing at all.
+ *
+ * The rule is the application's own, from theme.ts, doubled selector included: `:focus-visible`
+ * alone is specificity (0,1,0) and loses the tie against framework rules that set `outline: 0`. */
+:focus-visible:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+a:focus-visible:focus-visible { outline-color: var(--lah-primary-text); }
+input:focus-visible:focus-visible,
+.pf-c-form-control:focus-visible:focus-visible { outline-color: var(--lah-primary-bg); }
+
+/* ── form controls ──────────────────────────────────────────────────────────────────────────── */
+.pf-c-form-control {
+    border-color: var(--lah-divider);
+    background-color: var(--lah-field-bg);
+    color: var(--lah-text);
+    border-radius: var(--lah-radius-ctrl);
+}
+.pf-c-form-control:not(textarea) { transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; }
+.pf-c-form-control:hover,
+.pf-c-form-control:focus {
+    border-bottom-width: 1px;
+    border-color: var(--lah-primary-bg);
+}
+.pf-c-form-control:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--lah-primary-bg) 28%, transparent); }
+.pf-c-form-control[aria-invalid="true"] { border-bottom-width: 1px; }
+.pf-c-form__label-text { margin-bottom: 3px; color: var(--lah-text); }
+
+/* ── buttons ────────────────────────────────────────────────────────────────────────────────── */
+/* Flat, not a gradient. The old gradient ran #6cbf71 → #41a045, and white on its top stop is
+ * 2.25:1 — the most-pressed control on the site, failing AA by more than half. One flat
+ * #15803d is 5.02:1 and is the application's button colour. */
+.pf-m-primary,
+.btn-primary,
+input[type="submit"].pf-m-primary {
+    background-color: var(--lah-primary-bg);
+    background-image: none;
+    color: var(--lah-on-primary);
+    border: none;
+    border-radius: var(--lah-radius-ctrl);
+}
+.pf-m-primary:hover,
+.btn-primary:hover {
+    background-color: var(--lah-primary-hover);
+    background-image: none;
+    color: var(--lah-on-primary);
+}
+.btn[disabled],
+.pf-c-button:disabled,
+.pf-c-button.pf-m-disabled {
+    background-color: var(--lah-disabled) !important;
+    background-image: none;
+    color: var(--lah-text-2);
+}
+.pf-c-button::after { border: none; }
+.pf-c-button.pf-m-control {
+    border: none;
+    background-color: var(--lah-subtle);
+    color: var(--lah-text);
+}
+.btn-group-lg > .btn, .btn-lg { font-size: 15px; font-weight: 500; }
+
+/* ── identity providers ─────────────────────────────────────────────────────────────────────── */
+.kc-social-item { margin-bottom: .7rem; border-radius: var(--lah-radius-ctrl); }
+.kc-social-provider-logo { font-size: 18px; line-height: 1.3; }
+.kc-social-item:hover i.kc-social-provider-logo { color: var(--lah-primary-text); }
+
+/* The University of Tartu button's mark, inline instead of the whole of Font Awesome 4.7.0 from a
+ * CDN for one glyph. `currentColor` through a mask, so it follows the text in either palette. */
 .kc-social-provider-logo.lahendus-idp-ut,
 i.lahendus-idp-ut {
     display: inline-block;
@@ -46,21 +276,14 @@ i.lahendus-idp-ut {
     height: 1em;
     vertical-align: -0.125em;
     background-color: currentColor;
-    -webkit-mask: var(--lahendus-university-icon) no-repeat center / contain;
-    mask: var(--lahendus-university-icon) no-repeat center / contain;
+    -webkit-mask: var(--lah-university-icon) no-repeat center / contain;
+    mask: var(--lah-university-icon) no-repeat center / contain;
 }
 
-:root {
-    --lahendus-university-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M320 32 0 160l320 128 320-128L320 32zM96 232v120c0 35 100 56 224 56s224-21 224-56V232l-224 90-224-90zM16 208v96l-8 88h48l-8-88v-96h-32z'/%3E%3C/svg%3E");
-
-    --pf-global--primary-color--100: #6cbf71;
-    --pf-global--primary-color--200: #41a045;
-    --pf-global--active-color--100: #6cbf71;
-}
-
-.login-pf body {
-    background: url(../img/bg.svg) no-repeat center center fixed;
-    background-size: cover;
-    height: auto;
-    min-height: 100%;
+/* ── footer band ────────────────────────────────────────────────────────────────────────────── */
+#kc-info-wrapper {
+    background-color: var(--lah-subtle);
+    color: var(--lah-text-2);
+    border-bottom-left-radius: var(--lah-radius);
+    border-bottom-right-radius: var(--lah-radius);
 }
