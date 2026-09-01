@@ -1,7 +1,58 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500|Sniglet&display=swap');
+/* Sniglet, served from this theme rather than from Google.
+ *
+ * This file used to open with two @import lines — Font Awesome 4.7.0 from cdnjs and Roboto+Sniglet
+ * from Google — duplicating what theme.properties also declared in stylesExternal. Both are gone.
+ * Nobody should have to contact Cloudflare and Google to look at a login form, and the login page
+ * of an identity provider is the last place to make that trade for one icon and one wordmark.
+ *
+ * Roboto went with them: it was imported and never applied to a single selector.
+ *
+ * Both subsets are here because Estonian needs them: ä, ö, ü and õ are in latin, but š and ž are
+ * in latin-ext, and the wordmark is the one place this face is used. Together they are 18 kB.
+ */
+@font-face {
+    font-family: 'Sniglet';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/sniglet-400-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+                   U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+                   U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Sniglet';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/sniglet-400-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+                   U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+                   U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* The University of Tartu identity-provider button.
+ *
+ * `kcLogoIdP-ut` used to be `fa fa-university`, which pulled the whole of Font Awesome 4.7.0 — a
+ * 2016 icon set — across the network for this one glyph, and left the button unmarked whenever
+ * cdnjs was slow or blocked. The same shape is inlined here instead: no request, no dependency,
+ * and it inherits the surrounding text colour.
+ */
+.kc-social-provider-logo.lahendus-idp-ut,
+i.lahendus-idp-ut {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    background-color: currentColor;
+    -webkit-mask: var(--lahendus-university-icon) no-repeat center / contain;
+    mask: var(--lahendus-university-icon) no-repeat center / contain;
+}
 
 :root {
+    --lahendus-university-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M320 32 0 160l320 128 320-128L320 32zM96 232v120c0 35 100 56 224 56s224-21 224-56V232l-224 90-224-90zM16 208v96l-8 88h48l-8-88v-96h-32z'/%3E%3C/svg%3E");
+
     --pf-global--primary-color--100: #6cbf71;
     --pf-global--primary-color--200: #41a045;
     --pf-global--active-color--100: #6cbf71;
