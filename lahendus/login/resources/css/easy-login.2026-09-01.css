@@ -312,7 +312,12 @@ input[type="submit"].pf-m-primary {
  *
  * A flex row fixes both at once: a 22px slot the icon is centred inside whatever its intrinsic box,
  * then the label, left-aligned so every provider's text starts at the same place. */
-.kc-social-item {
+/* `a.kc-social-item.pf-c-button` and not `.kc-social-item`: PatternFly sets `display: block` from
+ * `.pf-c-button.pf-m-block`, which is two classes, so a single-class rule loses the tie no matter
+ * how late it is loaded. A first attempt at this used one class, and measured afterwards: the
+ * float and the text-align took effect and the flex row silently did not, leaving the icons
+ * aligned and the labels still 13px apart. */
+a.kc-social-item.pf-c-button {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -333,8 +338,12 @@ input[type="submit"].pf-m-primary {
     line-height: 1;
 }
 /* The masked icon sizes from mask-size rather than its box, so it matches the glyph beside it
- * instead of stretching to fill the slot. */
+ * instead of stretching to fill the slot. display is restated because the standalone mask rule
+ * further up sets inline-block, and inside the slot the two icons must agree. */
 .kc-social-item .kc-social-provider-logo.lahendus-idp-ut {
+    display: inline-flex;
+    width: auto;
+    height: 22px;
     -webkit-mask-size: 18px 18px;
     mask-size: 18px 18px;
 }
